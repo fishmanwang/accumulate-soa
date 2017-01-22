@@ -8,6 +8,8 @@ import com.accumulate.exception.CommonErrorCode;
 import com.accumulate.resp.Response;
 import com.accumulate.resp.UserModel;
 import com.accumulate.service.UserBizService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 
@@ -16,6 +18,8 @@ import javax.annotation.Resource;
  * Created by tjwang on 2017/1/13.
  */
 public class UserDubboServiceImpl implements UserService {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private UserBizService userBizService;
@@ -28,8 +32,10 @@ public class UserDubboServiceImpl implements UserService {
             UserModel model = UserAssembler.transfer(user);
             resp = Response.ok(model);
         } catch (ApplicationException ae) {
+            logger.error(ae.getMessage(), ae);
             resp = Response.fail(ae.getErrorCode().getCode(), ae.getMessage());
         } catch (Exception e) {
+            logger.error(e.getMessage(), e);
             resp = Response.fail(CommonErrorCode.SYSTEM);
         }
 

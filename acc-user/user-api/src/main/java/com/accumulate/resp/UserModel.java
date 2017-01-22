@@ -2,10 +2,12 @@ package com.accumulate.resp;
 
 import com.accumulate.utils.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * 用户模型
  */
-public class UserModel {
+public class UserModel implements Serializable {
     private Integer id;
     /**
      * 用户名
@@ -16,6 +18,14 @@ public class UserModel {
      * 显示名
      */
     private String displayName;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

@@ -346,5 +346,24 @@ public class StringUtils {
 	    }  
 	    return keyword;  
 	}
-	
+
+	/**
+	 * 将数字格式化为指定长度字符串。例如len=4，1=>0001, 10=>0010, 100=>0100, 1000=>1000
+	 * @param num 被格式化的数字
+	 * @param len 格式化后长度
+     * @return
+     */
+	public static String formatNumStr(int num, int len) {
+		String str = String.valueOf(num);
+		StringBuffer sb = new StringBuffer();
+		if (str.length() < len) {
+			int n = len - str.length();
+			while (n -- > 0) {
+				sb.append("0");
+			}
+		}
+		sb.append(str);
+		return sb.toString();
+	}
+
 }
