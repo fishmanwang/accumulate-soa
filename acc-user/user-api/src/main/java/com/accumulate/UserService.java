@@ -18,4 +18,6 @@ public interface UserService {
      */
     Response<UserModel> create(String username, String password);
 
+    Response<Void> hello();
+
 }

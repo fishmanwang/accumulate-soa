@@ -42,4 +42,14 @@ public class UserDubboServiceImpl implements UserService {
         return resp;
     }
 
+    @Override
+    public Response<Void> hello() {
+        logger.info("Hello dubbo");
+        try {
+            Thread.sleep(3000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Response.ok(null);
+    }
 }
